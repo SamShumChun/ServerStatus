@@ -44,34 +44,34 @@ install_base() {
     (command -v curl >/dev/null 2>&1 && command -v wget >/dev/null 2>&1 && command -v pip3 >/dev/null 2>&1) || install_soft curl wget python3-pip python3
 }
 
-# install_docker() {
-#     install_base
-#     command -v docker >/dev/null 2>&1
-#     if [[ $? != 0 ]]; then
-#         install_base
-#         echo -e "正在安装 Docker"
-#         bash <(curl -sL https://get.docker.com) >/dev/null 2>&1
-#         if [[ $? != 0 ]]; then
-#             echo -e "${red}下载Docker失败${plain}"
-#             exit 1
-#         fi
-#         systemctl enable docker.service
-#         systemctl start docker.service
-#         echo -e "${green}Docker${plain} 安装成功"
-#     fi
+install_docker() {
+    install_base
+    command -v docker >/dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        install_base
+        echo -e "正在安装 Docker"
+        bash <(curl -sL https://get.docker.com) >/dev/null 2>&1
+        if [[ $? != 0 ]]; then
+            echo -e "${red}下载Docker失败${plain}"
+            exit 1
+        fi
+        systemctl enable docker.service
+        systemctl start docker.service
+        echo -e "${green}Docker${plain} 安装成功"
+    fi
 
-#     command -v docker-compose >/dev/null 2>&1
-#     if [[ $? != 0 ]]; then
-#         echo -e "正在安装 Docker Compose"
-#         wget --no-check-certificate -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" >/dev/null 2>&1
-#         if [[ $? != 0 ]]; then
-#             echo -e "${red}下载Compose失败${plain}"
-#             return 0
-#         fi
-#         chmod +x /usr/local/bin/docker-compose
-#         echo -e "${green}Docker Compose${plain} 安装成功"
-#     fi
-# }
+    command -v docker-compose >/dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        echo -e "正在安装 Docker Compose"
+        wget --no-check-certificate -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" >/dev/null 2>&1
+        if [[ $? != 0 ]]; then
+            echo -e "${red}下载Compose失败${plain}"
+            return 0
+        fi
+        chmod +x /usr/local/bin/docker-compose
+        echo -e "${green}Docker Compose${plain} 安装成功"
+    fi
+}
 
 
 modify_bot_config(){
