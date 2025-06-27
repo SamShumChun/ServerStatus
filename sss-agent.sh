@@ -4,7 +4,7 @@
 #   System Required: CentOS 7+ / Debian 8+ / Ubuntu 16+ /
 #     Arch 未测试
 #   Description: Server Status 监控安装脚本
-#   Github: https://github.com/lidalao/ServerStatus
+#   Github: https://github.com/SamShumChun/ServerStatus
 #========================================================
 
 SSS_BASE_PATH="/opt/sss"
@@ -97,7 +97,7 @@ uninstall_agent() {
 show_menu() {
     echo -e "
     ${green}Server Status监控管理脚本${plain}
-    --- https://github.com/lidalao/sss ---
+    --- https://github.com/SamShumChun/sss ---
     ${green}1.${plain}  安装监控Agent
     ${green}2.${plain}  卸载Agent
     ${green}0.${plain}  退出脚本
