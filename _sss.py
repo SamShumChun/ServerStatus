@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# Create by : https://github.com/lidalao/ServerStatus
+# Create by : https://github.com/SamShumChun/ServerStatus
 # 版本：0.0.1, 支持Python版本：2.7 to 3.9
 # 支持操作系统： Linux, OSX, FreeBSD, OpenBSD and NetBSD, both 32-bit and 64-bit architectures
 
@@ -211,7 +211,7 @@ def remove():
 def cmd():
     print("\n")
     print('- - - 欢迎使用最简洁的探针: Server Status - - -')
-    print('详细教程请参考：https://lidalao.com/archives/87')
+    print('详细教程请参考：https://SamShumChun.com/archives/87')
     print("\n")
     _show()
     print("\n")
