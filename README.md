@@ -19,7 +19,6 @@ mkdir sss && cd sss && wget --no-check-certificate https://raw.githubusercontent
 ```
 安装成功后，web服务地址：http://ip:8081
 
-更多信息请移步 https://lidalao.com/archives/87  +1ip
 
 # 参考
 - https://github.com/cppla/ServerStatus
