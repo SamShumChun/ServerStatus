@@ -15,7 +15,6 @@ import uuid
 CONFIG_FILE = "config.json"
 GITHUB_RAW_URL = "https://raw.githubusercontent.com/SamShumChun/ServerStatus/master"
 #IP_URL = "https://api.ipify.org"
-IP_URL = "223.122.172.52"
 
 jjs = {}
 ip = ""
@@ -31,7 +30,8 @@ def how2agent(user, passwd):
 def getIP():
     global ip
     if ip == "": 
-        ip = requests.get(IP_URL).content.decode('utf8')
+        #ip = requests.get(IP_URL).content.decode('utf8')
+    	ip = requests.get().content.decode('utf8')
     return ip
 
 def restartSSS():
