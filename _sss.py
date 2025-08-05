@@ -14,7 +14,7 @@ import uuid
 
 CONFIG_FILE = "config.json"
 GITHUB_RAW_URL = "https://raw.githubusercontent.com/SamShumChun/ServerStatus/master"
-IP_URL = "https://api.ipify.org"
+IP_URL = "223.122.172.52"
 
 jjs = {}
 ip = ""
