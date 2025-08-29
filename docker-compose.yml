@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: serverstatus_server
+    image: samshumchun/serverstatus_server:latest
     healthcheck:
       test: curl --fail http://localhost:80 || bash -c 'kill -s 15 -1 && (sleep 10;
         kill -s 9 -1)'
@@ -27,7 +27,7 @@ services:
       context: ./plugin
       dockerfile: Dockerfile-telegram
     container_name: bot4sss
-    image: serverstatus_bot
+    image: samshumchun/latestserverstatus_bot:latest
     networks:
       serverstatus-network:
         ipv4_address: 172.23.0.3
