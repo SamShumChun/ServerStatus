@@ -1,7 +1,7 @@
 version: "3"
 services:
   sss:
-    image: samshumchun/serverstatus
+    image: samshumchun/serverstatus:server
     healthcheck:
       test: curl --fail http://localhost:80 || bash -c 'kill -s 15 -1 && (sleep 10;
         kill -s 9 -1)'
@@ -23,7 +23,7 @@ services:
       - 8081:80
   bot:
     container_name: bot4sss
-    image: samshumchun/serverstatus:latest
+    image: samshumchun/serverstatus:bot
     networks:
       serverstatus-network:
         ipv4_address: 172.23.0.3
