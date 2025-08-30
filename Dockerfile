@@ -2,7 +2,7 @@
 FROM debian:bookworm AS builder
 LABEL maintainer=""
 
-ENV VERSION 2.0
+ENV VERSION samshum
 
 RUN apt-get update -y && apt-get -y install gcc g++ make libcurl4-openssl-dev
 
