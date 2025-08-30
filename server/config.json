@@ -1,41 +1,49 @@
 {
 	"servers": [
 		{
-			"username": "s01",
-			"name": "node1",
-			"type": "xen",
-			"host": "host1",
-			"location": "🇨🇳",
-			"password": "USER_DEFAULT_PASSWORD",
+			"username": "V1",
+			"name": "V1_BWG",
+			"type": "KVM",
+			"host": "BWG",
+			"location": "🇺🇸",
+			"password": "V1",
 			"monthstart": 1
 		},
 		{
-			"username": "s02",
-			"name": "node2",
-			"type": "vmware",
-			"host": "host2",
-			"location": "🇯🇵",
-			"password": "USER_DEFAULT_PASSWORD",
-			"monthstart": 1
+            "username": "V2",
+            "name": "V2_RN",
+            "type": "KVM",
+            "host": "racknerd",
+            "location": "🇨🇦",
+            "password": "V2",
+            "monthstart": 1
 		},
 		{
-			"disabled": true,
-			"username": "s03",
-			"name": "node3",
-			"type": "hyper",
-			"host": "host3",
-			"location": "🇫🇷",
-			"password": "USER_DEFAULT_PASSWORD",
-			"monthstart": 1
+            "username": "V3_OC1",
+            "name": "V3_OC1",
+            "type": "KVM",
+            "host": "Oracle",
+            "location": "🇰🇷",
+            "password": "V3_OC1",
+            "monthstart": 1
 		},
 		{
-			"username": "s04",
-			"name": "node4",
-			"type": "kvm",
-			"host": "host4",
-			"location": "🇰🇷",
-			"password": "USER_DEFAULT_PASSWORD",
-			"monthstart": 1
+            "username": "V3_OC2",
+            "name": "V3_OC2",
+            "type": "KVM",
+            "host": "Oracle",
+            "location": "🇰🇷",
+            "password": "V3_OC2",
+            "monthstart": 1
+		},
+		{
+            "username": "V5",
+            "name": "V5_Aliyun",
+            "type": "KVM",
+            "host": "Aliyun",
+            "location": "🇨🇳",
+            "password": "V5",
+            "monthstart": 1
 		}
 	],
 	"monitors": [
