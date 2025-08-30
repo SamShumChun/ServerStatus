@@ -20,7 +20,7 @@ service="/usr/lib/systemd/system"
 jq_file="${file}/jq"
 [[ ! -e ${jq_file} ]] && jq_file="/usr/bin/jq"
 
-github_prefix="https://raw.githubusercontent.com/cppla/ServerStatus/master"
+github_prefix="https://raw.githubusercontent.com/samshumchun/ServerStatus/master"
 
 NAME="ServerStatus"
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -52,33 +52,48 @@ check_installed_server_status() {
   [[ ! -e "${server_file}/sergate" ]] && echo -e "${Error} $NAME 服务端没有安装，请检查 !" && exit 1
 }
 
-check_installed_client_status() {
-  [[ ! -e "${client_file}/client-linux.py" ]] && echo -e "${Error} $NAME 客户端没有安装，请检查 !" && exit 1
+check_installed_client_status(){
+	if [[ ! -e "${client_file}/status-client.py" ]]; then
+		if [[ ! -e "${file}/status-client.py" ]]; then
+			echo -e "${Error} ServerStatus 客户端没有安装，请检查 !" && exit 1
+		fi
+	fi
 }
 
 Download_Server_Status_server() {
   cd "/tmp" || exit 1
-  wget -N --no-check-certificate https://github.com/cppla/ServerStatus/archive/refs/heads/master.zip
+  wget -N --no-check-certificate https://github.com/samshumchun/ServerStatus/archive/refs/heads/master.zip
     [[ ! -e "master.zip" ]] && echo -e "${Error} ServerStatus 服务端下载失败 !" && exit 1
   unzip master.zip
   rm -rf master.zip
   [[ ! -d "/tmp/ServerStatus-master" ]] && echo -e "${Error} ServerStatus 服务端解压失败 !" && exit 1
   cd "/tmp/ServerStatus-master/server" || exit 1
   make
-  [[ ! -e "sergate" ]] && echo -e "${Error} ServerStatus 服务端编译失败 !" && cd "${file_1}" && rm -rf "/tmp//ServerStatus-master" && exit 1
-  cd "${file_1}" || exit 1
-  mkdir -p "${server_file}"
-  mv "/tmp/ServerStatus-master/server" "${file}"
-  mv "/tmp/ServerStatus-master/web" "${file}"
-  mv "/tmp/ServerStatus-master/plugin" "${file}"
-  rm -rf "/tmp/ServerStatus-master"
-  if [[ ! -e "${server_file}/sergate" ]]; then
-    echo -e "${Error} ServerStatus 服务端移动重命名失败 !"
-    [[ -e "${server_file}/sergate1" ]] && mv "${server_file}/sergate1" "${server_file}/sergate"
-    exit 1
-  else
-    [[ -e "${server_file}/sergate1" ]] && rm -rf "${server_file}/sergate1"
-  fi
+  [[ ! -e "sergate" ]] && echo -e "${Error} ServerStatus 服务端编译失败 !" && cd "${file_1}" && rm -rf "/tmp/ServerStatus-master" && exit 1
+  cd "${file_1}"
+	[[ ! -e "${file}" ]] && mkdir "${file}"
+	if [[ ! -e "${server_file}" ]]; then
+		mkdir "${server_file}"
+		mv "/tmp/ServerStatus-master/server/sergate" "${server_file}/sergate"
+		mv "/tmp/ServerStatus-master/web" "${web_file}"
+	else
+		if [[ -e "${server_file}/sergate" ]]; then
+			mv "${server_file}/sergate" "${server_file}/sergate1"
+			mv "/tmp/ServerStatus-master/server/sergate" "${server_file}/sergate"
+		else
+			mv "/tmp/ServerStatus-master/server/sergate" "${server_file}/sergate"
+			mv "/tmp/ServerStatus-master/web" "${web_file}"
+		fi
+	fi
+	if [[ ! -e "${server_file}/sergate" ]]; then
+		echo -e "${Error} ServerStatus 服务端移动重命名失败 !"
+		[[ -e "${server_file}/sergate1" ]] && mv "${server_file}/sergate1" "${server_file}/sergate"
+		rm -rf "/tmp/ServerStatus-master"
+		exit 1
+	else
+		[[ -e "${server_file}/sergate1" ]] && rm -rf "${server_file}/sergate1"
+		rm -rf "/tmp/ServerStatus-master"
+	fi
 }
 
 Download_Server_Status_client() {
