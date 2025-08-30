@@ -5,15 +5,16 @@ LABEL maintainer="SamShum"
 
 ENV VERSION samshum
 
+WORKDIR /
+
+COPY . /
 #RUN apt-get update -y && apt-get -y install gcc g++ make libcurl4-openssl-dev
 RUN apt-get update && \
     apt-get -y install wget && \
     /bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh' && \
     cp -rf /web /usr/local/ServerStatus/
 
-WORKDIR /
 
-COPY . /
 
 # RUN /bin/sh -c './status.sh'
 # RUN cp -rf /web /usr/local/ServerStatus/
