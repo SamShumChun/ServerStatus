@@ -11,7 +11,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-    container_name: server_status_serve
+    container_name: serverstatus_sc
     restart: unless-stopped
     networks:
       serverstatus-network:
