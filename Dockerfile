@@ -7,13 +7,13 @@ ENV VERSION 2.0
 WORKDIR /
 
 COPY . /
-RUN apt-get update && \
-    apt-get -y install wget && \
-    /bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh' && \
-    cp -rf /web /usr/local/ServerStatus/
+RUN apt-get update && apt-get -y install gcc g++ make libcurl4-openssl-dev wget && /bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh' && cp -rf /web /usr/local/ServerStatus/
+
 
 # glibc env run
-FROM nginx:1.17.8
+FROM nginx:latest
+
+RUN mkdir -p /ServerStatus/server/ && ln -sf /dev/null /var/log/nginx/access.log && ln -sf /dev/null /var/log/nginx/error.log
 
 COPY --from=builder /usr/local/ServerStatus/server /ServerStatus/server/
 COPY --from=builder /usr/local/ServerStatus/web /usr/share/nginx/html/
