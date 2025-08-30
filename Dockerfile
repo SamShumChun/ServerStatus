@@ -7,13 +7,12 @@ ENV VERSION 2.0
 
 RUN apt-get update -y && apt-get -y install gcc g++ make libcurl4-openssl-dev
 
-WORKDIR /
-COPY . /
+COPY . .
 
-WORKDIR /ServerStatus
+WORKDIR /server
 
-RUN /bin/bash -c './status.sh' && cp -rf /web /usr/local/ServerStatus/
-
+RUN make -j
+RUN pwd && ls -a
 
 # glibc env run
 FROM nginx:latest
