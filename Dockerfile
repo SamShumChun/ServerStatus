@@ -1,6 +1,7 @@
 # The Dockerfile for build localhost source, not git repo
-FROM debian:bookworm AS builder
-LABEL maintainer=""
+# FROM debian:bookworm AS builder
+FROM ubuntu:bionic-20200112 as builder
+LABEL maintainer="SamShum"
 
 ENV VERSION samshum
 
