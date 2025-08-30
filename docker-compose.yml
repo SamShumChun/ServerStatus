@@ -1,7 +1,7 @@
 version: "3"
 services:
   sss:
-    image: samshumchun/serverstatus:latest
+    image: samshumchun/serverstatus
     healthcheck:
       test: curl --fail http://localhost:80 || bash -c 'kill -s 15 -1 && (sleep 10;
         kill -s 9 -1)'
@@ -15,7 +15,7 @@ services:
         ipv4_address: 172.23.0.2
     volumes:
       - ./server/config.json:/ServerStatus/server/config.json
-      # - ./web/json:/usr/share/nginx/html/json
+      - ./web/json:/usr/share/nginx/html/json
     environment:
       TZ: Asia/Shanghai
     ports:
