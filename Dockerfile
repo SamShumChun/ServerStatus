@@ -1,6 +1,5 @@
 # The Dockerfile for build localhost source, not git repo
-# FROM debian:bookworm AS builder
-FROM ubuntu:bionic-20200112 as builder
+FROM debian:bookworm AS builder
 LABEL maintainer=""
 
 ENV VERSION 2.0
@@ -19,8 +18,8 @@ FROM nginx:latest
 
 RUN mkdir -p /ServerStatus/server/ && ln -sf /dev/null /var/log/nginx/access.log && ln -sf /dev/null /var/log/nginx/error.log
 
-COPY --from=builder /usr/local/ServerStatus/server /ServerStatus/server/
-COPY --from=builder /usr/local/ServerStatus/web /usr/share/nginx/html/
+COPY --from=builder server /ServerStatus/server/
+COPY --from=builder web /usr/share/nginx/html/
 
 # china time 
 ENV TZ=Asia/Shanghai
