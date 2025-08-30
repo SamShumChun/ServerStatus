@@ -10,9 +10,10 @@ WORKDIR /
 COPY . /
 #RUN apt-get update -y && apt-get -y install gcc g++ make libcurl4-openssl-dev
 RUN apt-get update && \
-    apt-get -y install wget && \
-    /bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh' && \
-    cp -rf /web /usr/local/ServerStatus/
+    apt-get -y install wget 
+    #&& \
+    #/bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh' && \
+    #cp -rf /web /usr/local/ServerStatus/
 
 
 
