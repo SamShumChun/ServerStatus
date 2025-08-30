@@ -1,9 +1,9 @@
 # The Dockerfile for build localhost source, not git repo
 # FROM debian:bookworm AS builder
-FROM ubuntu:20.04 as builder
+FROM ubuntu:bionic-20200112 as builder
 LABEL maintainer=""
 
-ENV VERSION 3.0
+ENV VERSION 2.0
 WORKDIR /
 
 COPY . /
