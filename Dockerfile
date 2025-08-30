@@ -3,7 +3,7 @@
 FROM ubuntu:bionic-20200112 as builder
 LABEL maintainer="SamShum"
 
-ENV VERSION samshum
+ENV VERSION Server
 
 WORKDIR /
 
