@@ -10,7 +10,7 @@ WORKDIR /
 
 COPY . /
 
-RUN /bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh'
+RUN /bin/sh -c './status.sh'
 RUN cp -rf /web /usr/local/ServerStatus/
 
 # RUN make -j
