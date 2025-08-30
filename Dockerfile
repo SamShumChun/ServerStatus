@@ -17,10 +17,7 @@ ENV VERSION 2.0
 WORKDIR /
 
 COPY . /
-RUN apt-get update && \
-    apt-get -y install wget && \
-    /bin/bash -c './status.sh' && \
-    cp -rf /web /usr/local/ServerStatus/
+RUN apt-get update && apt-get -y install wget && /bin/bash -c './status.sh' && cp -rf /web /usr/local/ServerStatus/
 
 
 # glibc env run
