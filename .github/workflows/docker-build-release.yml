@@ -35,16 +35,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push to docker hub @ SSS
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          dockerfile: Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}:latest
-            ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}:${{ env.tag }}
+     # - name: Build and push to docker hub @ SSS
+     #   uses: docker/build-push-action@v6
+     #   with:
+     #     context: .
+     #     dockerfile: Dockerfile
+     #     platforms: linux/amd64,linux/arm64
+     #     push: true
+     #     tags: |
+     #       ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}:latest
+     #       ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}:${{ env.tag }}
 
       - name: Build and push to docker hub @ bot
         uses: docker/build-push-action@v6
