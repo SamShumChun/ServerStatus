@@ -11,11 +11,11 @@ WORKDIR /
 
 COPY . /
 
-RUN /bin/sh -c './status.sh'
-RUN cp -rf /web /usr/local/ServerStatus/
+# RUN /bin/sh -c './status.sh'
+# RUN cp -rf /web /usr/local/ServerStatus/
 
-# RUN make -j
-# RUN pwd && ls -a
+RUN make -j
+RUN pwd && ls -a
 
 # glibc env run
 FROM nginx:latest
