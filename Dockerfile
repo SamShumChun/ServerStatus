@@ -8,7 +8,7 @@ RUN apt-get update -y && apt-get -y install gcc g++ make libcurl4-openssl-dev
 
 COPY . .
 
-WORKDIR /server
+WORKDIR /
 
 RUN make -j
 RUN pwd && ls -a
