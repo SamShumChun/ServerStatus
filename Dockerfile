@@ -4,10 +4,15 @@ FROM ubuntu:bionic-20200112 as builder
 LABEL maintainer=""
 
 ENV VERSION 2.0
-WORKDIR /
 
+RUN apt-get update -y && apt-get -y install gcc g++ make libcurl4-openssl-dev
+
+WORKDIR /
 COPY . /
-RUN apt-get update && apt-get -y install gcc g++ make libcurl4-openssl-dev wget && /bin/bash -c './status.sh' && cp -rf /web /usr/local/ServerStatus/
+
+WORKDIR /ServerStatus
+
+RUN /bin/bash -c './status.sh' && cp -rf /web /usr/local/ServerStatus/
 
 
 # glibc env run
