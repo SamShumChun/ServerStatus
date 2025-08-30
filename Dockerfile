@@ -7,7 +7,7 @@ ENV VERSION 2.0
 WORKDIR /
 
 COPY . /
-RUN apt-get update && apt-get -y install gcc g++ make libcurl4-openssl-dev wget && /bin/bash -c '/bin/echo -e "1\n\nn\n" | ./status.sh' && cp -rf /web /usr/local/ServerStatus/
+RUN apt-get update && apt-get -y install gcc g++ make libcurl4-openssl-dev wget && /bin/bash -c './status.sh' && cp -rf /web /usr/local/ServerStatus/
 
 
 # glibc env run
