@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.9
 
 LABEL maintainer="samshum"
 LABEL version="0.0.1"
