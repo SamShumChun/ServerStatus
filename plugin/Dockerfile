@@ -1,7 +1,7 @@
-FROM python:3.9
+FROM python:3.9.20-alpine
 
 LABEL maintainer="samshum"
-LABEL version="0.0.1"
+LABEL version="1.0.1"
 LABEL description="Telegram Bot for ServerStatus"
 
 WORKDIR /app
